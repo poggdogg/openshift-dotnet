@@ -1,4 +1,4 @@
-FROM dotnet22-base AS build
+FROM dotnet-22-rhel7 AS build
 USER 0
 #WORKDIR /app
 ENV WORKDIR /opt/app
@@ -13,7 +13,7 @@ RUN dotnet restore
 COPY . $WORKDIR
 RUN dotnet publish -c Release -o out
 # Build runtime image
-FROM dotnet22-base AS runtime
+FROM dotnet-22-runtime-rhel7 AS runtime
 COPY --from=build $WORKDIR .
 EXPOSE 80
 USER 1001
