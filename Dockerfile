@@ -4,7 +4,7 @@ USER 0
 ENV WORKDIR /opt/app
 WORKDIR /opt/app
 ENV ASPNETCORE_ENVIRONMENT Development
-SHELL [ "/bin/bash" , "-c"]
+#SHELL [ "/bin/bash" , "-c"]
 # Copy csproj and restore as distinct layers
 RUN mkdir -p $WORKDIR
 COPY *.csproj $WORKDIR
@@ -19,4 +19,4 @@ EXPOSE 80
 USER 1001
 ENV ASPNETCORE_ENVIRONMENT Development
 #ENV PATH /opt/rh/rh-nodejs10/root/usr/bin:/opt/rh/rh-dotnet22/root/usr/bin:/opt/rh/rh-dotnet22/root/usr/sbin:/opt/app-root/src/.local/bin:/opt/app-root/src/bin:/opt/app-root/node_modules/.bin:/opt/app-root/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/opt/app-root/.dotnet/tools
-ENTRYPOINT ["dotnet", "prime.dll"]
+ENTRYPOINT ["/usr/bin/dotnet", "prime.dll"]
